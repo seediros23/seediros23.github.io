@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Primitive Skill-Based Robot Learning from Human Evaluative Feedback</title>
+
+    <script>
+        var task_map = {
+            "simple-object-manipulation": "simple_object_manipulation",
+            "visual-goal-reaching": "visual_goal_reaching",
+            "novel-concept-grounding": "novel_concept_grounding",
+            "one-shot-video-imitation": "one_shot_video_imitation",
+            "visual-constraint-satisfaction": "visual_constraint_satisfaction",
+            "visual-reasoning": "visual_reasoning"
+        };
+
+        function updateDemoVideo(category) {
+            // var demo = document.getElementById("single-menu-demos").value;
+            var task = document.getElementById(category + "-menu-tasks").value;
+            var inst = document.getElementById(category + "-menu-instances").value;
+
+            console.log(task_map[category], task, inst)
+
+            var video = document.getElementById(category + "-single-task-video");
+            video.src = "assets/videos/demos/" +
+                task_map[category] +
+                "/" +
+                task +
+                "/" +
+                inst +
+                ".mp4";
+            video.playbackRate = 2.0;
+            video.play();
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <style>
+        .gif-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .gif-wrapper {
+            width: 33%;
+            overflow: hidden;
+            text-align: center; /* Center the caption text */
+        }
+
+        .gif-wrapper img {
+            width: 100%;
+            /* margin-bottom: -20px; */
+        }
+
+        .caption {
+            margin-top: 10px; /* Adjust the margin as needed */
+        }
+    </style>
+</head>
+<body>
+
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">Primitive Skill-Based Robot Learning from Human Evaluative Feedback</h1>
+                    <h3 class="title is-4 conference-authors"><a target="_blank" href="https://ieee-iros.org/">IROS 2023</a>
+                    </h3>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            <a target="_blank" href="TODO">Ayano&#160;Hiranaka</a><sup>2&dagger;</sup>,
+                            <a target="_blank" href="https://mj-hwang.github.io/">Minjune&#160;Hwang</a><sup>1&dagger;</sup>,
+                            <a target="_blank" href="TODO">Sharon&#160;Lee</a><sup>1</sup>,
+                            <a target="_blank" href="https://www.chenwangjeremy.net/">Chen&#160;Wang</a><sup>1</sup>,
+                            <a target="_blank" href="https://profiles.stanford.edu/fei-fei-li">Li&#160;Fei-Fei</a><sup>1,3</sup>,
+                            <a target="_blank" href="https://jiajunwu.com/">Jiajun&#160;Wu</a><sup>1,3</sup>,
+                            <a target="_blank" href="https://ai.stanford.edu/~zharu/">Ruohan&#160;Zhang</a><sup>1</sup>,
+                            <br>
+                        </span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>Department of Computer Science, </span>
+                        <span class="author-block"><sup>2</sup>Department of Mechanical Engineering, </span>
+                        <span class="author-block"><sup>3</sup>Institute of Human-Centered Artificial Intelligence (HAI)</span>
+                        <br>
+                        <span class="author-block">Stanford University</span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>&dagger;</sup>Equal contribution, alphabetically ordered</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- TODO PDF Link. -->
+                            <span class="link-block">
+                                <a target="_blank" href="TODO arxiv link"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="ai ai-arxiv"></i>
+                                </span>
+                                <span>arXiv</span>
+                                </a>
+                            </span>
+
+                            <span class="link-block">
+                                <a target="_blank" href="assets/TODO.pdf"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </span>
+                                <span>PDF</span>
+                                </a>
+                            </span>
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                                <a target="_blank" href="TODO"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>Code</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <span>Code and paper comming soon!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Evaluation without Execution -->
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <img src="assets/videos/evaluation without execution.gif" class="interpolation-image"
+                         alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                    <br>
+                    <!-- <h2 class="title is-3"><span class="dvima">Motivation</span></h2> -->
+                    <span style="font-size: 110%"><b>Evaluation without Execution:</b>
+                        SEED enables safe and sample-efficient learning in the real world by leveraging a 
+                        skill-based action space. With this intuitive representation,
+                        humans can evaluate robot actions even before they are executed.
+                        Here, the next goal is to pick up the broom. Human evaluates robot's action choice
+                        purely from the skill and parameter visualizations (without the need for
+                        watching the robot take action).
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Carousel of rollouts -->
+<section class="hero is-light is-small">
+    <div class="hero-body">
+        <div class="container">
+            <!-- <h2 class="title is-3"><span class="dvima">Sample Rollouts</span></h2> -->
+            <div id="results-carousel" class="carousel results-carousel">
+                <div class="item item-hotdog_rollout">
+                    <video poster="" id="hotdog_rollout" autoplay controls muted loop height="100%"
+                           playbackRate=2.0>
+                        <source src="assets/videos/seed_hotdog.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-drawer_rollout">
+                    <video poster="" id="drawer_rollout" autoplay controls muted loop height="100%"
+                           playbackRate=2.0>
+                        <source src="assets/videos/seed_drawer.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-sweep_rollout">
+                    <video poster="" id="sweep_rollout" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/seed_sweep.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-ui_image">
+                    <img src="assets/images/ui.png" class="ui_image"/>
+                </div>
+            </div>
+            <span style="font-size: 110%">
+                <b>Sample rollouts on long-horizon, real world tasks.</b>
+                Trained SEED agent successfully completes the task without human guidance,
+                and is able to recover from failed subgoals (e.g. unsuccessful picking of sausage or pushing drawer).
+            </span>
+        </div>
+    </div>
+</section>
+
+<!-- ABSTRACT -->
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p style="font-size: 125%">
+                        Reinforcement learning (RL) algorithms face significant challenges when dealing with 
+                        long-horizon robot manipulation tasks in real-world environments due to sample 
+                        inefficiency and safety issues. To overcome these challenges, we propose a novel
+                        framework, SEED, which leverages two approaches: reinforcement learning from human 
+                        feedback (RLHF) and primitive skill-based reinforcement learning. Both approaches 
+                        are particularly effective in addressing sparse reward issues and the complexities 
+                        involved in long-horizon tasks. By combining them, SEED reduces the human effort 
+                        required in RLHF and increases safety in training robot manipulation with RL in 
+                        real-world settings. Additionally, parameterized skills provide a clear view of the 
+                        agent's high-level intentions, allowing humans to evaluate skill choices before they 
+                        are executed. This feature makes the training process even safer and more efficient. 
+                        To evaluate the performance of SEED, we conducted extensive experiments on five 
+                        manipulation tasks with varying levels of complexity. Our results show that SEED 
+                        significantly outperforms state-of-the-art RL algorithms in sample efficiency and 
+                        safety. In addition, SEED also exhibits a substantial reduction of human effort 
+                        compared to other RLHF methods.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pull figure -->
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Overview</span></h2>
+                    <img src="assets/images/pull.png" class="interpolation-image"
+                         alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                    <br>
+                    <span style="font-size: 110%">
+                        <p>
+                            SEED integrates two approaches: 
+                            <b>(1) learning from human evaluative feedback</b> and
+                            <b>(2) primitive skill-based motion control</b>.
+                            By breaking down long-horizon tasks into a sequence
+                            of primitive skills, evaluative feedback can provide dense training signals, 
+                            making long-horizon tasks with sparse rewards more tractable.
+
+                            During training, the robot proposes an action in the form of skill and skill 
+                            parameter selection. The human trainer then evaluates the robot's proposed action
+                            and the robot learns to maximize positive evaluation it receives.
+                            When the human is confident the robot can make good choices, they will let the 
+                            robot to execute the action.
+                        </p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Method-->
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Method</span></h2>                    
+                    <!-- Parameterized Primitive Skills -->
+                    <h3 class="title is-4"><span>Parameterized Primitive Skills</span></h3>
+                    <div class="gif-container">
+                        <div class="gif-wrapper">
+                          <img src="assets/videos/pick.gif" alt="GIF 1">
+                          <figcaption class="caption"><p>Pick (x, y, z)</p></figcaption>
+                        </div>
+                        <div class="gif-wrapper">
+                          <img src="assets/videos/place.gif" alt="GIF 2">
+                          <figcaption class="caption"><p>Place (x, y, z)</p></figcaption>
+                        </div>
+                        <div class="gif-wrapper">
+                          <img src="assets/videos/push.gif" alt="GIF 3">
+                          <figcaption class="caption"><p>Push (x, y, z, d)</p></figcaption>
+                        </div>
+                      </div>
+                    <br>
+                    <span style="font-size: 110%">
+                        We equip the robot with a set of parameterized primitive skills. This allows the control
+                        policy to focus on learning skill and parameter selection without the burden of learning
+                        low-level motor control.
+                    </span>
+                    <br><br>
+
+                    <!-- Model Features -->
+                    <h3 class="title is-4">SEED Model</h3>
+                    <img src="assets/images/model2.png" class="interpolation-image"
+                        alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                    <br>
+                    <ul style="font-size: 110%; padding-left: 5%; list-style-type: square;">
+                        <li>
+                            <b>Hierarchical framework</b>: the <i>skill policy</i> first selects the skill,
+                            and the <i>parameter policy</i> selects its parameters.
+                        </li>
+                        <li>
+                            <b>Unique parameter policy for each skill</b>: the policy corresponding to the selected skill is invoked.
+                        </li>
+                        <li>
+                            <b>Human evaluation as reward signal</b>: discrete human evaluation is used instead of an environment reward. 
+                        </li>
+                        <li>
+                            <b>Balanced replay buffer</b>: we sample an equal number of "good" and "bad" samples in each batch during
+                            learning to compensate for "bad" actions filling the replay buffer during the initial stage of training.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Experiments-->
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Results</span></h2>
+                
+                    <!-- Human Effort -->
+                    <!-- <h3 class="title is-4"><span class="dvima">Human Effort</span></h3> -->
+                    <div class="gif-container">
+                        <div class="gif-wrapper">
+                          <img src="assets/images/plt_sweeping_new.png" alt="PLT 1">
+                        </div>
+                        <div class="gif-wrapper">
+                          <img src="assets/images/plt_collecting_new.png" alt="PLT 2">
+                        </div>
+                        <div class="gif-wrapper">
+                          <img src="assets/images/plt_cooking_new.png" alt="PLT 3">
+                        </div>
+                    </div>
+                    <span style="font-size: 110%">
+                        <p>
+                            <b>SEED agent learns to complete real-world tasks with fewer human feedback.</b>
+                            SEED and TAMER are compared for the amount of human effort required. 
+                            For all tasks, SEED efficiently learns to complete the tasks within the given number of feedbacks,
+                            while TAMER failed to complete the tasks. 
+                            Additionally, higher performance in the second runs of each experiment demonstrates that human 
+                            trainers can quickly learn to provide better feedback.
+                        </p>
+                    </span>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- <section class="section" id="BibTeX">
+    <div class="container is-max-widescreen content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>
+            @inproceedings{
+                hiranaka2023primitive,
+                title     = {Primitive Skill-based Robot Learning from Human Evaluative Feedback},
+                author    = {Hiranaka, Ayano and Hwang, Minjune and Lee, Sharon and Wang, Chen and Fei-Fei, Li and Wu, Jiajun and Zhang, Ruohan},
+                booktitle = {2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+                year      = {2023}
+            }   
+        </code></pre>
+    </div>
+</section> -->
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="content has-text-centered">
+                    <p>
+                        Website template borrowed from <a
+                            href="https://github.com/nerfies/nerfies.github.io">NeRFies</a> and <a
+                            href="https://github.com/cliport/cliport.github.io">CLIPort</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
